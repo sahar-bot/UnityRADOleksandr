@@ -15,20 +15,20 @@ public class CubeControl : MonoBehaviour
     void Update()
     {
         
-        Application.targetFrameRate = 60;
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             transform.position += transform.forward;
         }
         else if (Input.GetKeyDown(KeyCode.S)) {
-            transform.position += (new Vector3(0, -1, 0));
+            transform.position -= transform.forward;
                 }
         else if (Input.GetKeyDown(KeyCode.D)) {
-            transform.position += (new Vector3(1, 0, 0));
+            transform.position += (new Vector3(-1, 0, 0));
                 }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.position += (new Vector3(-1, 0, 0));
+            transform.position += (new Vector3(1, 0, 0));
         }
         if (Input.GetKeyDown(KeyCode.R))
 
