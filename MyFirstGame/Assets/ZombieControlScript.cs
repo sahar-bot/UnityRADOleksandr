@@ -9,7 +9,7 @@ public class ZombieControlScript : MonoBehaviour
     Animator zombieAnimator;
     enum ZombieState { Idle, Attack, Follow}
     ZombieState currentlyIs = ZombieState.Idle;
-    private float aggroRadius = 30;
+    private float aggroRadius = 8;
     private float walkingSpeed = 1;
     private float meleeDistance = 2;
 
@@ -22,7 +22,7 @@ public class ZombieControlScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         switch(currentlyIs)
         {
             case ZombieState.Idle:
@@ -34,7 +34,14 @@ public class ZombieControlScript : MonoBehaviour
                 
                 break;
 
-                case ZombieState.Attack:
+            case ZombieState.Attack:
+                if (Vector3.Distance(player.transform.position, transform.position) > meleeDistance)
+                {
+                    currentlyIs = ZombieState.Follow;
+                    zombieAnimator.SetBool("isAttacking", false);
+                    zombieAnimator.SetBool("isWalking", true);
+                }
+                 
 
                 break;
 
@@ -43,8 +50,11 @@ public class ZombieControlScript : MonoBehaviour
                     transform.position += transform.forward * walkingSpeed * Time.deltaTime;
 
                 if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
+                {
                     currentlyIs = ZombieState.Attack;
-                
+                    zombieAnimator.SetBool("isWalking", false);
+                    zombieAnimator.SetBool("isAttacking", true);
+                }
                 break;
         }
 
