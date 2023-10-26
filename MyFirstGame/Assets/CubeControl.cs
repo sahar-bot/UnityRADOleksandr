@@ -6,6 +6,7 @@ using UnityEngine.Purchasing;
 
 public class CubeControl : MonoBehaviour
 {
+    private float walkingSpeed = 1;
     // Start is called before the first frame update
     void Start()
     { 
@@ -16,25 +17,30 @@ public class CubeControl : MonoBehaviour
     {
         
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.forward;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {  walkingSpeed = 2; }
+            else walkingSpeed = 1;
+            transform.position += transform.forward * walkingSpeed *Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.S)) {
-            transform.position -= transform.forward;
-                }
-        else if (Input.GetKeyDown(KeyCode.D)) {
-            transform.position += (new Vector3(-1, 0, 0));
-                }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.position += (new Vector3(1, 0, 0));
-        }
-        if (Input.GetKeyDown(KeyCode.R))
 
-            transform.Rotate(Vector3.up, 45);
-        if (Input.GetKeyDown(KeyCode.Q))
-            transform.Rotate(Vector3.up, -45);
+       if (Input.GetKey(KeyCode.S)) {
+            transform.position -= transform.forward * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.D)) {
+            transform.position += (new Vector3(-1, 0, 0)) * Time.deltaTime;
+        }
+        
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += (new Vector3(1, 0, 0)) * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.R))
+
+            transform.Rotate(Vector3.up, 45 * Time.deltaTime);
+        if (Input.GetKey(KeyCode.Q))
+            transform.Rotate(Vector3.up, -45 * Time.deltaTime);
         
 
         
