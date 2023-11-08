@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BallControlScript : MonoBehaviour
@@ -15,11 +16,24 @@ public class BallControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+
+    }
+    void Kickball(Transform kicker)
+    {
+        rb.AddForce(kickStrenght * kicker.forward, ForceMode.Impulse);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Plane"   ) 
         {
-
-
-            rb.AddForce(kickStrenght * Vector3.up, ForceMode.Impulse);
+            print("Boing!");
         }
+        else 
+        {
+            print("Ouch!");
+            Kickball(collision.transform);
+         }
+
+        print("Hello World!");
     }
 }
