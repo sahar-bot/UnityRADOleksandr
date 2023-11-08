@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ZombieControlScript : MonoBehaviour
 {
@@ -46,7 +47,8 @@ public class ZombieControlScript : MonoBehaviour
                 break;
 
                 case ZombieState.Follow:
-                    transform.LookAt(player.transform.position);
+                    Vector3 target = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+                    transform.LookAt(target);
                     transform.position += transform.forward * walkingSpeed * Time.deltaTime;
 
                 if (Vector3.Distance(player.transform.position, transform.position) < meleeDistance)
