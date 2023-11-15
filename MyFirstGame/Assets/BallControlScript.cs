@@ -6,8 +6,6 @@ using UnityEngine;
 public class BallControlScript : MonoBehaviour
 {
 
-    
-
 
     Rigidbody rb;
     float kickStrenght = 1000;
@@ -26,24 +24,25 @@ public class BallControlScript : MonoBehaviour
     {
         rb.AddExplosionForce(kickStrenght, kicker.position, 4);
     }
+
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Plane")
-        {
-            print("Boing!");
-        }
-        else 
+        { }
+
+        else
         {
             ZombieControlScript testIfZombie = collision.gameObject.GetComponent<ZombieControlScript>();
             if (testIfZombie != null)
             {
                 testIfZombie.dieNow();
+                CubeControl cubeScript = GameObject.FindObjectOfType<CubeControl>();
+                cubeScript.balls += 5;
             }
 
-            print("Ouch!");
             Kickball(collision.transform);
-         }
+        }
 
-        print("Hello World!");
     }
 }

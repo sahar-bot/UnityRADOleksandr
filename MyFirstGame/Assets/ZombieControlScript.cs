@@ -11,7 +11,7 @@ public class ZombieControlScript : MonoBehaviour
     Animator zombieAnimator;
     enum ZombieState { Idle, Attack, Follow}
     ZombieState currentlyIs = ZombieState.Idle;
-    private float aggroRadius = 8;
+    private float aggroRadius = 100;
     private float walkingSpeed = 1;
     private float meleeDistance = 2;
 
