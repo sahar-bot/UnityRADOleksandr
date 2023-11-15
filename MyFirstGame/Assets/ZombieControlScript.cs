@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
@@ -61,5 +62,10 @@ public class ZombieControlScript : MonoBehaviour
         }
 
 
+    }
+
+    internal void dieNow()
+    {
+        Destroy(gameObject);
     }
 }

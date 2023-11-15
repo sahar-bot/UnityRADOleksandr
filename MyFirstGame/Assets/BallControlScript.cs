@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class BallControlScript : MonoBehaviour
 {
+
+    
+
+
     Rigidbody rb;
-    float kickStrenght = 4;
+    float kickStrenght = 1000;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -18,18 +22,24 @@ public class BallControlScript : MonoBehaviour
     {
 
     }
-    void Kickball(Transform kicker)
+    public void Kickball(Transform kicker)
     {
-        rb.AddForce(kickStrenght * kicker.forward, ForceMode.Impulse);
+        rb.AddExplosionForce(kickStrenght, kicker.position, 4);
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Plane"   ) 
+        if (collision.gameObject.name == "Plane")
         {
             print("Boing!");
         }
         else 
         {
+            ZombieControlScript testIfZombie = collision.gameObject.GetComponent<ZombieControlScript>();
+            if (testIfZombie != null)
+            {
+                testIfZombie.dieNow();
+            }
+
             print("Ouch!");
             Kickball(collision.transform);
          }
