@@ -7,6 +7,8 @@ public class ZombieManagerScript : MonoBehaviour
     
 
     int numberOfZombies = 100;
+    public GameObject zombieCloneTemplate;
+
     // Start is called before the first frame update
     void Start()
     {
