@@ -37,6 +37,7 @@ public class ZombieControlScript : MonoBehaviour
                 break;
 
             case ZombieState.Attack:
+                
                 if (Vector3.Distance(player.transform.position, transform.position) > meleeDistance)
                 {
                     currentlyIs = ZombieState.Follow;
