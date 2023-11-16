@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3704f95bca1345c4db27b7980be1070f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieCloneTemplate: {fileID: 844822151586554683, guid: ffe95d3c2f3ba6f4490e5283811e4803, type: 3}
+  zombieCloneTemplate: {fileID: 772387373827763438, guid: 70a9accec46039b4c975655b08204045, type: 3}
 --- !u!4 &1850523693
 Transform:
   m_ObjectHideFlags: 0
